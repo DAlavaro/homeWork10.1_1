@@ -14,6 +14,9 @@ def index():
 
 @app.route('/candidates/<int:pk>/')
 def candidates(pk):
+    """
+    Выводит данные кандидата
+    """
     user, picture, skills = get_by_pk(pk)
     text = f"<img src='({picture})'>"
     text +=f"<pre>{user} -\n{pk}\n{skills}</pre>"
@@ -21,11 +24,15 @@ def candidates(pk):
 
 @app.route('/skills/<x>')
 def skills(x):
+    """
+    Выведите тех кандидатов, в списке навыков у которых содержится skill
+    """
     name = get_by_skill(x)
     text = '<pre>'
     for i in data:
-        if i['name'] in name:
-            text += f"{i['name']} -\n{i['pk']}\n{i['skills']}\n\n"
+        for j in name:
+            if i['name'] == j:
+                text += f"{i['name']} -\n{i['pk']}\n{i['skills']}\n\n"
     text += '</pre>'
     return text
 

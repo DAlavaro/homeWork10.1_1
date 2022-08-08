@@ -18,6 +18,10 @@ def all_candidates():
 
 
 def get_by_pk(pk):
+    """
+    возвращает кандидата, ссылку на картинку, навыки по pk,
+    :return: str
+    """
     data = load_candidates()
     for i in data:
         if pk == i['pk']:
@@ -26,8 +30,10 @@ def get_by_pk(pk):
 
 
 def get_by_skill(skill_name):
+    """
+    Возвращает кандидата по навыку
+    :return: list
+    """
     data = load_candidates()
     candidates = [i['name'] for i in data if skill_name.lower() in i['skills'].lower()]
     return candidates
-
-
