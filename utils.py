@@ -35,5 +35,5 @@ def get_by_skill(skill_name):
     :return: list
     """
     data = load_candidates()
-    candidates = [i['name'] for i in data if skill_name.lower() in i['skills'].lower()]
+    candidates = [i['name'] for i in data if (" " + skill_name.lower()) in (" " + i['skills'].lower())]
     return candidates

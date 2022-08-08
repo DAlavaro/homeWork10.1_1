@@ -30,9 +30,8 @@ def skills(x):
     name = get_by_skill(x)
     text = '<pre>'
     for i in data:
-        for j in name:
-            if i['name'] == j:
-                text += f"{i['name']} -\n{i['pk']}\n{i['skills']}\n\n"
+        if i['name'] in name:
+            text += f"{i['name']} -\n{i['pk']}\n{i['skills']}\n\n"
     text += '</pre>'
     return text
 
